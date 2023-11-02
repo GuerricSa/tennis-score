@@ -5,7 +5,7 @@ export function Restart() {
   const dispatch = useDispatch(restart)
   return (
     <button
-    onClick={() => {dispatch()}}
+    onClick={() => {dispatch(restart())}}
     >
       Remettre à zéro
     </button>

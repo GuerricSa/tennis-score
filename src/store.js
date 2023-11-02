@@ -1,4 +1,4 @@
-import { configureStore } from 'redux'
+import { createStore } from 'redux'
 
 const initialState = {
   player1: 0,
@@ -7,15 +7,6 @@ const initialState = {
   winner: null,
   playing: true
 }
-
-// Action creator
-const playPause = () => ({ type: 'playPause' })
-const restart = () => ({ type: 'restart' })
-const pointScored = (player) => ({
-  type: 'pointScored',
-  payload: { player: player }
-})
-
 
 function reducer(state, action) {
   if(action.type === 'playPause') {
@@ -79,4 +70,4 @@ function reducer(state, action) {
 }
 
 
-const store = configureStore(reducer, initialState)
+export const store = createStore(reducer, initialState)

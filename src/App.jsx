@@ -4,33 +4,12 @@ import { useState } from 'react'
 
 function App() {
   const [scoreText, setScoreText] = useState('Le score est 0 - 0')
-  const initialState = {
-    player1: 0,
-    player2: 0,
-    advantage: null,
-    winner: null,
-    playing: true
-  }
-  const store = createStore(reducer, initialState)
+
+
 
   const score = document.getElementById('score')
-  console.log(score)
 
-  const player1Action = () => {
 
-  }
-
-  const player2Action = () => {
-
-  }
-
-  const resetAction = () => {
-
-  }
-
-  const playPauseAction = () => {
-    store.dispatch(playPause())
-  }
 
   function updateScoreText(
     playing,
@@ -60,17 +39,9 @@ function App() {
     }
   }
 
-  const playPause = () => ({ type: 'playPause' })
 
-  function reducer(state, action) {
-    if(action.type === 'playPause') {
-      return {
-        ...state,
-        playing: !state.playing
-      }
-    }
-    return state;
-  }
+
+
 
   // store.subscribe(
   //   () => {

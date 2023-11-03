@@ -18,12 +18,20 @@ export function Display() {
   const scorePlayer2 = useSelector((state) => state.player2)
   const advantage = useSelector((state) => state.advantage)
   const winner = useSelector((state) => state.winner)
+  const historical = useSelector((state) => state.historical)
+  const player2wins = historical.filter(object => object.winner === 'player2').length
+  const player1wins = historical.filter(object => object.winner === 'player1').length
+
 
   if (winner) {
     return (
-      <p className="display">
-        {`Le ${playerSelector(winner)} a gagné !!`}
-      </p>
+      <div>
+        <p>Le joueur 1 a remporté {player1wins} matchs</p>
+        <p>Le joueur 2 a remporté {player2wins} matchs</p>
+        <p className="display">
+          {`Le ${playerSelector(winner)} a gagné !!`}
+        </p>
+      </div>
     )
   }
   if (!gameIsPlaying) {
@@ -34,9 +42,13 @@ export function Display() {
     )
   }
   return (
-    <div className="display">
-      le score est de : {scorePlayer1} - {scorePlayer2}
+    <div>
       <div>
+        <p>Le joueur 1 a remporté {player1wins} matchs</p>
+        <p>Le joueur 2 a remporté {player2wins} matchs</p>
+      </div>
+      <div className="display">
+      le score est de : {scorePlayer1} - {scorePlayer2}
       {advantage !== null ? `avantage :  ${playerSelector(advantage)}` : '' }
       </div>
     </div>

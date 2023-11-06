@@ -1,14 +1,19 @@
-import { useDispatch } from "react-redux"
-import { playPause } from '../actions'
+import { useSelector, useStore } from "react-redux"
+import { randomSet } from '../actions'
+import { selectGameIsPlaying } from "../selectors"
 
 export function PlayPauseButton() {
-  const dispatch = useDispatch()
+  const store = useStore()
+  const playing = useSelector(selectGameIsPlaying)
 
   return (
     <button
-      onClick={() => {dispatch(playPause())}}
+      className="button"
+      onClick={() => {
+        randomSet(store)
+      }}
     >
-      Pause/reprendre
+      {playing ? 'Jeu en cours...' : 'Jouer'}
     </button>
   )
 }
